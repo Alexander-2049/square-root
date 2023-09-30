@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Root</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            gap: 12px;
+            margin: 0;
+        }
+        .wrapper {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+    <p id="resultSquareRoot"></p>
+    <p id="resultMathSqrt"></p>
+    <p id="resultCompare"></p>
+    <div>
+        <span><b>N:</b></span>
+        <input id="N" type="number"/>
+    </div>
+    <div>
+        <span><b>Eps:</b></span>
+        <input id="Eps" type="number"/>
+    </div>
+    <pre><code class="language-js">function squareRoot(N, Eps) {
+    let left = 1
+    let right = N
+    let center = (left + right) / 2
+
+    let iterations = 0
+    while(Math.abs(center * center - N) > Eps) {
+        center = (left + right) / 2
+        if(center * center < N) {
+            left = center
+        } else {
+            right = center
+        }
+
+        iterations++
+        if(iterations > 200) return NaN;
+    }
+
+    return center
+}</code></pre></div>
+<img width="500" src="./blockDiagram.png">
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
