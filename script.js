@@ -30,7 +30,15 @@ update()
 function update() {
     document.getElementById('resultSquareRoot').innerText = `squareRoot(${N}, ${Eps}) = ${squareRoot(N, Eps)}`
     document.getElementById('resultMathSqrt').innerText = `Math.sqrt(${N}) = ${Math.sqrt(N)}`
-    document.getElementById('resultCompare').innerText = `${squareRoot(N, Eps).toFixed(7)} | ${Math.sqrt(N).toFixed(7)}`
+    const fixed1 = squareRoot(N, Eps).toFixed(7)
+    const fixed2 = Math.sqrt(N).toFixed(7)
+    const el_resultCompare = document.getElementById('resultCompare')
+    el_resultCompare.innerText = `${fixed1} | ${fixed2}`
+    if(fixed1 === fixed2) {
+        el_resultCompare.style.color = "green"
+    } else {
+        el_resultCompare.style.color = "red"
+    }
 }
 
 
